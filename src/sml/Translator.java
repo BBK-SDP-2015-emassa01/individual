@@ -20,7 +20,7 @@ public class Translator {
 	private String fileName; // source file of SML code
 
 	private static final String SRC = "src";
-
+	
 	public Translator(String fileName) {
 		this.fileName = SRC + "/" + fileName;
 	}
@@ -30,7 +30,7 @@ public class Translator {
 	// return "no errors were detected"
 	public boolean readAndTranslate(Labels lab, ArrayList<Instruction> prog) {
 
-		try (Scanner sc = new Scanner(new File(fileName))) {
+		try (Scanner sc = new Scanner(new File(fileName))) {//factorial6.txt test fileName
 			// Scanner attached to the file chosen by the user
 			labels = lab;
 			labels.reset();

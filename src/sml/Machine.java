@@ -1,6 +1,7 @@
 package sml;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import lombok.Data;
 
@@ -33,9 +34,12 @@ public class Machine {
 	}
 
 	public static void main(String[] args) {
-
+		System.out.println("Enter the name of your program.");
+		Scanner input = new Scanner(System.in);
+		String nameOfProgram = input.nextLine();
+		
 		Machine m = new Machine();
-		Translator t = new Translator(args[0]);
+		Translator t = new Translator(nameOfProgram);
 		t.readAndTranslate(m.getLabels(), m.getProg());
 
 		System.out.println("Here is the program; it has " + m.getProg().size() + " instructions.");

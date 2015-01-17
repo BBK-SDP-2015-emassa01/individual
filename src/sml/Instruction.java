@@ -1,10 +1,15 @@
 package sml;
 
+
+import lombok.Data;
+
 /**
  * This class is the superclass of the classes for machine instructions
  * 
  * @author Esha Massand
  */
+
+@Data
 
 public abstract class Instruction {
 	protected String label;
@@ -16,6 +21,7 @@ public abstract class Instruction {
 	public Instruction(String l, String op) {
 		this.label = l;
 		this.opcode = op;
+
 	}
 
 	// = the representation "label: opcode" of this Instruction
