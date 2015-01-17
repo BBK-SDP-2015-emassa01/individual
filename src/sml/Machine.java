@@ -50,7 +50,6 @@ public class Machine {
 	}
 
 	// Print the program
-
 	@Override
 	public String toString() {
 		StringBuffer s = new StringBuffer();
