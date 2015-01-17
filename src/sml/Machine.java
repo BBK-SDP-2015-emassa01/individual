@@ -34,9 +34,9 @@ public class Machine {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Enter the name of your program.");
-		Scanner input = new Scanner(System.in);
-		String nameOfProgram = input.nextLine();
+		System.out.println("Enter the name of your program (remember to include the extenstion).");
+		@SuppressWarnings("resource")
+		String nameOfProgram = new Scanner(System.in).nextLine();
 		
 		Machine m = new Machine();
 		Translator t = new Translator(nameOfProgram);
