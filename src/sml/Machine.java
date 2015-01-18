@@ -2,7 +2,6 @@ package sml;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import lombok.Data;
 
 /*
