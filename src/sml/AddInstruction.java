@@ -1,11 +1,13 @@
 package sml;
 
+import lombok.Data;
+
 /**
  * This class ....
  * 
  * @author Esha Massand
  */
-
+@Data
 public class AddInstruction extends Instruction {
 
 	private int result;
