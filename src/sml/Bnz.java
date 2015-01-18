@@ -28,6 +28,8 @@ public class Bnz extends Instruction {
 			//make the labelNext be the next instruction to execute
 			System.out.println(super.toString() + " register " + register + " value is " + result + ".\n"
 					+ "Skipping to the next instruction specified within the bnz instruction.");
+			
+			
 		} else {
 			//do nothing
 			System.out.println(super.toString() + " register " + register + " value is " + result + ".\n"
@@ -38,6 +40,6 @@ public class Bnz extends Instruction {
 
 	@Override
 	public String toString() {
-		return super.toString() + " register " + register + " value is " + result;
+		return super.toString();
 	}
 }
