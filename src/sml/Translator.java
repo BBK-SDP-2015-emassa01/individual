@@ -117,8 +117,6 @@ public class Translator {
 			return new Out(label, r);
 		case "bnz":
 			r = scanInt();
-			s1 = scanInt();
-			s2 = scanInt();
 			x = scan();
 			//x = line.split(" +");
 			//System.out.println(x.toString());
