@@ -22,12 +22,11 @@ public class Out extends Instruction {
 
 	@Override
 	public void execute(Machine m) {
-		result = m.getRegisters().getRegister(register);
+		this.result = m.getRegisters().getRegister(register);
 		System.out.println(super.toString() + " register " + register + " value is " + result);
 	}
-
-	@Override
-	public String toString() {
-		return super.toString() + " register " + register + " value is " + result;
-	}
+	
+	/* No overridden to String() method, as the 'execute' will print (using System.out.println()) the register values, and 
+	*  no other functionality is required beyond he toString() method in the Parent Class, as specified by the course-work description. 
+	*/
 }
