@@ -38,9 +38,9 @@ public class Bnz extends Instruction {
 			
 			System.out.println("labelNext element: "+m.getProg().indexOf(labelNext));
 			System.out.println("labelNext: " + labelNext);
-			//Instruction ins = m.getProg().get(m.getProg().indexOf(labelNext));
-			m.setPc(m.getPc() + 1); //we are continuing with the program so we must increase the program counter.
-			//ins.execute(m);		
+			//we are continuing with the program so we must 
+			//increase the program counter to the nextLabel.
+			//m.setPc(m.getLabels().indexOf(labelNext)); 
 		} else {
 			//do nothing
 			System.out.println(super.toString() + " register " + register + " value is " + result + ".\n"
