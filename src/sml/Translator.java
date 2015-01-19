@@ -79,6 +79,7 @@ public class Translator {
 		int s2;
 		int r;
 		String x;
+		String y;
 
 		if (line.equals(""))
 			return null;
@@ -119,7 +120,9 @@ public class Translator {
 			s1 = scanInt();
 			s2 = scanInt();
 			x = scan();
-			return new Bnz(label, r, x);
+			y = scan();
+			System.out.println("String:"+ins+" label: " + label + ", r: "+ r + ", x: " + x.toString() +", y: " + y.toString()+ "s1: " + s1 + ", s2: " + s2);
+			return new Bnz(label, r, y);
 		}
 
 		// You will have to write code here for the other instructions.

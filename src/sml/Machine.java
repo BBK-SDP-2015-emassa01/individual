@@ -24,7 +24,7 @@ public class Machine {
 	// The program counter; it contains the index (in prog) of
 	// the next instruction to be executed.
 
-	private int pc;
+	private int pc; 
 
 	{
 		System.out.println("MachineClass");
@@ -51,6 +51,7 @@ public class Machine {
 
 		System.out.println("Values of registers at program termination:");
 		System.out.println(m.getRegisters() + ".");
+
 	}
 
 	// Print the program
@@ -72,6 +73,8 @@ public class Machine {
 			Instruction ins = getProg().get(getPc());
 			setPc(getPc() + 1);
 			ins.execute(this);
+			System.out.println("machine this: "+ this);
 		}
 	}
+
 }
