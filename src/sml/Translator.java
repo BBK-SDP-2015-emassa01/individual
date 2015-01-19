@@ -79,7 +79,6 @@ public class Translator {
 		int s2;
 		int r;
 		String x;
-		String y;
 
 		if (line.equals(""))
 			return null;
@@ -109,6 +108,7 @@ public class Translator {
 			r = scanInt();
 			s1 = scanInt();
 			s2 = scanInt();
+			System.out.println("String:"+ins+" label: " + label + ", r: "+ r + " s1: " + s1 + ", s2: " + s2);
 			return new DivInstruction(label, r, s1, s2);
 		case "out":
 			r = scanInt();
@@ -120,9 +120,10 @@ public class Translator {
 			s1 = scanInt();
 			s2 = scanInt();
 			x = scan();
-			y = scan();
-			System.out.println("String:"+ins+" label: " + label + ", r: "+ r + ", x: " + x.toString() +", y: " + y.toString()+ "s1: " + s1 + ", s2: " + s2);
-			return new Bnz(label, r, y);
+			//x = line.split(" +");
+			//System.out.println(x.toString());
+			//System.out.println("String:"+ins+" label: " + label + ", r: "+ r + ", x: " + x[3].toString() +"s1: " + s1 + ", s2: " + s2);
+			return new Bnz(label, r, x);
 		}
 
 		// You will have to write code here for the other instructions.

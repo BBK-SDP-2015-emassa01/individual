@@ -1,5 +1,5 @@
 f0 lin 20 6
 f1 lin 21 1
 f2 lin 22 1
-f3 bnz 20 21
-f4 bnz 2 21
+f3 bnz 20 f1
+f4 lin 2 5

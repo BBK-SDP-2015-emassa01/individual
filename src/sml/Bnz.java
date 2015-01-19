@@ -31,7 +31,7 @@ public class Bnz extends Instruction {
 			System.out.println(super.toString() + " register " + register + " value is " + result + ".\n"
 					+ "Skipping to the next instruction specified within the bnz instruction.");
 		
-			System.out.println(m.getProg());
+			System.out.println(m.getLabels());
 			
 			//Get the Instruction, by finding the element of the ArrayList that 
 			//holds the instruction of the next label
@@ -39,8 +39,8 @@ public class Bnz extends Instruction {
 			System.out.println("labelNext element: "+m.getProg().indexOf(labelNext));
 			System.out.println("labelNext: " + labelNext);
 			//we are continuing with the program so we must 
-			//increase the program counter to the nextLabel.
-			//m.setPc(m.getLabels().indexOf(labelNext)); 
+			//set the program counter.
+			m.setPc(m.getLabels().indexOf(labelNext)); 
 		} else {
 			//do nothing
 			System.out.println(super.toString() + " register " + register + " value is " + result + ".\n"
