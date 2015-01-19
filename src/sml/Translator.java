@@ -22,6 +22,7 @@ public class Translator {
 	private static final String SRC = "src";
 	
 	public Translator(String fileName) {
+		System.out.println("TranslatorClass");
 		this.fileName = SRC + "/" + fileName;
 	}
 
@@ -30,7 +31,7 @@ public class Translator {
 	// return "no errors were detected"
 	public boolean readAndTranslate(Labels lab, ArrayList<Instruction> prog) {
 
-		try (Scanner sc = new Scanner(new File(fileName))) {//factorial6.txt test fileName
+		try (Scanner sc = new Scanner(new File(fileName))) {
 			// Scanner attached to the file chosen by the user
 			labels = lab;
 			labels.reset();
@@ -39,6 +40,7 @@ public class Translator {
 
 			try {
 				line = sc.nextLine();
+				System.out.println("line: " + line); // for purposes of viewing program execution.
 			} catch (NoSuchElementException ioE) {
 				return false;
 			}
@@ -130,7 +132,8 @@ public class Translator {
 	 * word, return ""
 	 */
 	private String scan() {
-		line = line.trim();
+		line = line.trim(); 
+		System.out.println("trimmed spaces off line: " + line);//print this for viewing
 		if (line.length() == 0)
 			return "";
 
@@ -139,6 +142,7 @@ public class Translator {
 			i = i + 1;
 		}
 		String word = line.substring(0, i);
+		System.out.println("word: " + word); //for viewing execution.
 		line = line.substring(i);
 		return word;
 	}
@@ -147,6 +151,7 @@ public class Translator {
 	// any error, return the maximum int
 	private int scanInt() {
 		String word = scan();
+		System.out.println("int: " + word); //for viewing execution.
 		if (word.length() == 0) {
 			return Integer.MAX_VALUE;
 		}

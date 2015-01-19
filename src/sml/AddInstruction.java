@@ -16,6 +16,7 @@ public class AddInstruction extends Instruction {
 
 	public AddInstruction(String label, String op) {
 		super(label, op);
+		System.out.println("AddInstructionClass");
 	}
 
 	public AddInstruction(String label, int result, int op1, int op2) {

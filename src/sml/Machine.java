@@ -27,6 +27,7 @@ public class Machine {
 	private int pc;
 
 	{
+		System.out.println("MachineClass");
 		labels = new Labels();
 		prog = new ArrayList<>();
 		pc = 0;

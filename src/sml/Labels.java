@@ -10,6 +10,7 @@ public class Labels {
 	private ArrayList<String> labels;
 
 	{
+		System.out.println("LabelsClass");
 		labels = new ArrayList<>();
 	}
 

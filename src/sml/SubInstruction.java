@@ -16,6 +16,7 @@ public class SubInstruction extends Instruction {
 
 	public SubInstruction(String l, String op) {
 		super(l, op);
+		System.out.println("SubInstructionClass");
 	}
 	
 	public SubInstruction(String label, int result, int op1, int op2) {

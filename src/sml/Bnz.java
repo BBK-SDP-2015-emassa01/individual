@@ -13,6 +13,7 @@ public class Bnz extends Instruction {
 
 	public Bnz(String label, String opcode) {
 		super(label, opcode);
+		System.out.println("BnzClass");
 	}
 
 	public Bnz(String label, int register, String labelNext) {

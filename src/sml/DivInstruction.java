@@ -17,6 +17,7 @@ public class DivInstruction extends Instruction {
 
 	public DivInstruction(String label, String op) {
 		super(label, op);
+		System.out.println("DivInstructionClass");
 	}
 	
 	public DivInstruction(String label, int result, int op1, int op2) {

@@ -12,6 +12,7 @@ public class Out extends Instruction {
 
 	public Out(String label, String opcode) {
 		super(label, opcode);
+		System.out.println("OutClass");
 	}
 
 	public Out(String label, int register) {

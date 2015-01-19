@@ -12,6 +12,7 @@ public class LinInstruction extends Instruction {
 
 	public LinInstruction(String label, String opcode) {
 		super(label, opcode);
+		System.out.println("LinInstructionClass");
 	}
 
 	public LinInstruction(String label, int register, int value) {

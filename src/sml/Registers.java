@@ -19,6 +19,7 @@ public class Registers {
 	// Constructor: an instance whose registers are set to 0
 
 	{
+		System.out.println("RegistersClass");
 		registers = new int[NUMBEROFREGISTERS];
 	}
 
