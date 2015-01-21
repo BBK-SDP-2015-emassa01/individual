@@ -19,6 +19,14 @@ public class Labels {
 	// Precondition: the list has at most 49 entries
 
 	public int addLabel(String lab) {
+		try {
+			if (labels.contains(lab)) {
+				System.out.println("\nDuplicate labels exist in the program.\nThis is not allowed. \nThis instruction will be skipped.\n");
+			}
+		} catch (UnsupportedOperationException UOE) {
+			System.out.println("Something went wrong pertaining to an Illegal Argument: "+ UOE.getMessage());
+			System.exit(0);
+		}
 		labels.add(lab);
 		return labels.size() - 1;
 	}
@@ -28,7 +36,7 @@ public class Labels {
 
 	public int indexOf(String lab) {
 		// invariant: lab is not in labels[0..i-1]
-		for (int i = 0; i != labels.size(); i++) { //or i< labels.size()
+		for (int i = 0; i != labels.size(); i++) { // or i< labels.size()
 			if (lab.equals(labels.get(i))) {
 				return i;
 			}
