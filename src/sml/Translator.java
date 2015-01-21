@@ -89,8 +89,6 @@ public class Translator {
 		System.out.println("Reflecting...");
 		try{
 		Class<?> theInstructionClass = Class.forName("src."+fileName);
-		//<?> is a raw type so if you don't put it, it will complain a little, but still compile!
-		//not good to leave it out.
 		//so we have a class - lets create an instance of it.
 		
 		try {
@@ -116,6 +114,7 @@ public class Translator {
 	} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 		e.printStackTrace();
 		System.err.println("It's all gone wrong.");
+	}
 	}
 //-----
 //		int s1; // Possible operands of the instruction
