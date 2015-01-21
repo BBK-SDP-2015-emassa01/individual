@@ -1,5 +1,5 @@
 f0 lin 20 6
 f1 lin 21 1
 f2 lin 22 1
-f1 add 20 22
+f1 add 20 22 21
 f4 lin 2 5

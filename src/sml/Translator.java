@@ -35,9 +35,14 @@ public class Translator {
 	public boolean readAndTranslate(Labels lab, ArrayList<Instruction> prog) {
 		
 		labelChecker.add(lab); 
+		try{
 		if (labelChecker.contains(lab)){
-			System.out.println("Duplicate labels exist in the program. "
-					+ "\nThis is not allowed. \nThis instruction will be skipped.");
+			System.out.println("\nDuplicate labels exist in the program. "
+					+ "\nThis is not allowed. \nThis instruction will be skipped.\n");
+		}
+		} catch (IllegalArgumentException IAE){
+			System.out.println("Something went wrong pertaining to an Illegal Argument: "+IAE.getMessage());
+			System.exit(0);
 		}
 
 		try (Scanner sc = new Scanner(new File(fileName))) {
