@@ -6,18 +6,18 @@ package sml;
  * @author Esha Massand
  */
 
-public class Bnz extends Instruction {
+public class BnzInstruction extends Instruction {
 	private int register;
 	private int result;
 	private String labelNext;
 
-	public Bnz(String label, String opcode) {
+	public BnzInstruction(String label, String opcode) {
 		super(label, opcode);
 		System.out.println("BnzClass");
 		System.out.println("And the label is: "+ label);
 	}
 
-	public Bnz(String label, int register, String labelNext) {
+	public BnzInstruction(String label, int register, String labelNext) {
 		super(label, "bnz");
 		this.register = register;
 		this.labelNext = labelNext;

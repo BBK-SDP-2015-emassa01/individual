@@ -6,16 +6,16 @@ package sml;
  * @author Esha Massand
  */
 
-public class Out extends Instruction {
+public class OutInstruction extends Instruction {
 	private int register;
 	private int result;
 
-	public Out(String label, String opcode) {
+	public OutInstruction(String label, String opcode) {
 		super(label, opcode);
 		System.out.println("OutClass");
 	}
 
-	public Out(String label, int register) {
+	public OutInstruction(String label, int register) {
 		super(label, "out");
 		this.register = register;
 	}

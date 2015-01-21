@@ -117,11 +117,11 @@ public class TranslatorOld {
 			r = scanInt();
 			s1 = scanInt();
 			s2 = scanInt();
-			return new Out(label, r);
+			return new OutInstruction(label, r);
 		case "bnz":
 			r = scanInt();
 			x = scan();
-			return new Bnz(label, r, x);
+			return new BnzInstruction(label, r, x);
 		}
 		return null;
 	}
