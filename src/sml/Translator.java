@@ -83,7 +83,12 @@ public class Translator {
 			return null;
 		}
 		
-		String theCurrentInstruction = scan();
+		//get the filename and convert it to classname
+		String ClassInstruction = scan() + "Instruction";
+		System.out.println(ClassInstruction);//this gives 'linInstruction'
+		ClassInstruction = ClassInstruction.substring(0,1).toUpperCase() + ClassInstruction.substring(1, ClassInstruction.length());
+		System.out.println(ClassInstruction);
+			
 		/*
 		 * This method uses the fileName, to scan the instructions in the lines
 		 * of the program. for each Instruction Class, will find the right
@@ -93,12 +98,9 @@ public class Translator {
 		 */
 
 		System.out.println("Reflecting...");
-		
-		
-		//get the filename and convert it to classname
 
 		try {
-			Class<?> theInstructionClassArguments = Class.forName("sml."+ fileName);
+			Class<?> theInstructionClassArguments = Class.forName("sml."+ ClassInstruction);
 			// so we have a class - lets create an instance of it.
 
 			Object InstructionObject;
