@@ -1,12 +1,14 @@
 package sml;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * This class ....
  * 
  * @author Esha Massand
  */
+@EqualsAndHashCode(callSuper=false)
 @Data
 public class AddInstruction extends Instruction {
 

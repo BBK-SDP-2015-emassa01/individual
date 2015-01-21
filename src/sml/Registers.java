@@ -1,8 +1,7 @@
 package sml;
 
-import java.util.NoSuchElementException;
-
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * This class ....
@@ -11,7 +10,7 @@ import lombok.Data;
  * 
  * @author Esha Massand
  */
-
+@EqualsAndHashCode(callSuper=false)
 @Data
 public class Registers {
 

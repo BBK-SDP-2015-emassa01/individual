@@ -34,6 +34,7 @@ public class Machine {
 		pc = 0;
 	}
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		System.out.println("Enter the name of your program (remember to include the extenstion).");
 		String nameOfProgram = new Scanner(System.in).nextLine();

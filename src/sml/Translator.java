@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -84,6 +82,8 @@ public class Translator {
 		if (line.equals("")) {
 			return null;
 		}
+		
+		String theCurrentInstruction = scan();
 		/*
 		 * This method uses the fileName, to scan the instructions in the lines
 		 * of the program. for each Instruction Class, will find the right
