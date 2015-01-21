@@ -24,7 +24,7 @@ public class Translator {
 	private String fileName; // source file of SML code
 
 	private static final String SRC = "src";
-	
+
 	public Translator(String fileName) {
 		System.out.println("TranslatorClass");
 		this.fileName = SRC + "/" + fileName;
@@ -44,7 +44,8 @@ public class Translator {
 
 			try {
 				line = sc.nextLine();
-				System.out.println("line: " + line); // for purposes of viewing program execution.
+				System.out.println("line: " + line); // for purposes of viewing
+														// program execution.
 			} catch (NoSuchElementException ioE) {
 				return false;
 			}
@@ -79,109 +80,116 @@ public class Translator {
 	// removed. Translate line into an instruction with label label
 	// and return the instruction
 	public Instruction getInstruction(String label) {
-		/* This method uses the fileName, to scan the instructions in the lines of the program.
-		*  for each Instruction Class, will find the right number of parameters (required for the 
-		*  constructor of the class), and will return the Class constructor with the correct number of
-		*  parameters to declare it.
-		*  Now I will use reflection to do this.
-		*/
-		
+		/*
+		 * This method uses the fileName, to scan the instructions in the lines
+		 * of the program. for each Instruction Class, will find the right
+		 * number of parameters (required for the constructor of the class), and
+		 * will return the Class constructor with the correct number of
+		 * parameters to declare it. Now I will use reflection to do this.
+		 */
+
 		System.out.println("Reflecting...");
-		try{
-		Class<?> theInstructionClass = Class.forName("src."+fileName);
-		//so we have a class - lets create an instance of it.
-		
 		try {
-			Constructor<?> InstructionConstructor = theInstructionClass.getConstructor(String.class,String.class);
+			Class<?> theInstructionClassArguments = Class.forName("sml."+ fileName);
+			// so we have a class - lets create an instance of it.
+
 			Object InstructionObject;
 			try {
-				InstructionObject = InstructionConstructor.newInstance("Esha", "111");
-				//this throws an IllegalAccessException and InstantiationExceptions if no nullary constructor
-				//should create a newInstance of the class.
-				System.out.println(InstructionObject);
-				
-				Class<? extends Object> c = InstructionObject.getClass();
-				
-				Method m = c.getMethod("setName", new Class[]{String.class});//setName is a method we want to invoke, and String.class is the Parameter that it takes in.
-				m.invoke(InstructionObject, new Object[]{"ohmygod"}); //m  is the method we want to invoke on object p. OhmyGod is the name we want to set. New Object because we don't know what parameters it takes in.
-				System.out.println(InstructionObject);	
-			} catch (IllegalArgumentException | InvocationTargetException e) {
+				// Using example here:
+				// http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
+				Class<?> aClass = Class.forName("src."+ fileName);
+				Constructor<?>[] allInstructionConstructors = aClass.getDeclaredConstructors();
+				for (Constructor<?> c : allInstructionConstructors) {
+					Class<?>[] parameterTypes = c.getParameterTypes();
+					for (int i = 0; i < parameterTypes.length; i++) {
+						if (parameterTypes[i]
+								.equals(theInstructionClassArguments)) {
+							InstructionObject = c.newInstance();
+							return (Instruction) InstructionObject;
+						}
+					}
+				}
+			} catch (InstantiationException | IllegalAccessException
+					| IllegalArgumentException | InvocationTargetException e) {
 				e.printStackTrace();
-			}	
-		} catch (NoSuchMethodException | SecurityException e) {
+				System.err.println("It's all gone wrong.");
+			}
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			System.err.println("It's all gone wrong.");
 		}
-	} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-		e.printStackTrace();
-		System.err.println("It's all gone wrong.");
+		return null;
 	}
-	}
-//-----
-//		int s1; // Possible operands of the instruction
-//		int s2;
-//		int r;
-//		String x;
-//
-//		if (line.equals(""))
-//			return null;
-//
-//		String ins = scan();
-//		switch (ins) {
-//		case "add":
-//			r = scanInt();
-//			s1 = scanInt();
-//			s2 = scanInt();
-//			return new AddInstruction(label, r, s1, s2);
-//		case "lin":
-//			r = scanInt();
-//			s1 = scanInt();
-//			return new LinInstruction(label, r, s1);
-//		case "sub":
-//			r = scanInt();
-//			s1 = scanInt();
-//			s2 = scanInt();
-//			return new SubInstruction(label, r, s1, s2);
-//		case "mul":
-//			r = scanInt();
-//			s1 = scanInt();
-//			s2 = scanInt();
-//			return new MulInstruction(label, r, s1, s2);
-//		case "div":
-//			r = scanInt();
-//			s1 = scanInt();
-//			s2 = scanInt();
-//			System.out.println("String:"+ins+" label: " + label + ", r: "+ r + " s1: " + s1 + ", s2: " + s2);
-//			return new DivInstruction(label, r, s1, s2);
-//		case "out":
-//			r = scanInt();
-//			s1 = scanInt();
-//			s2 = scanInt();
-//			return new Out(label, r);
-//		case "bnz":
-//			r = scanInt();
-//			x = scan();
-//			return new Bnz(label, r, x);
-//		}
-//		return null;
-//	}
-//-----		
+
+	// -----
+	// int s1; // Possible operands of the instruction
+	// int s2;
+	// int r;
+	// String x;
+	//
+	// if (line.equals(""))
+	// return null;
+	//
+	// String ins = scan();
+	// switch (ins) {
+	// case "add":
+	// r = scanInt();
+	// s1 = scanInt();
+	// s2 = scanInt();
+	// return new AddInstruction(label, r, s1, s2);
+	// case "lin":
+	// r = scanInt();
+	// s1 = scanInt();
+	// return new LinInstruction(label, r, s1);
+	// case "sub":
+	// r = scanInt();
+	// s1 = scanInt();
+	// s2 = scanInt();
+	// return new SubInstruction(label, r, s1, s2);
+	// case "mul":
+	// r = scanInt();
+	// s1 = scanInt();
+	// s2 = scanInt();
+	// return new MulInstruction(label, r, s1, s2);
+	// case "div":
+	// r = scanInt();
+	// s1 = scanInt();
+	// s2 = scanInt();
+	// System.out.println("String:"+ins+" label: " + label + ", r: "+ r +
+	// " s1: " + s1 + ", s2: " + s2);
+	// return new DivInstruction(label, r, s1, s2);
+	// case "out":
+	// r = scanInt();
+	// s1 = scanInt();
+	// s2 = scanInt();
+	// return new Out(label, r);
+	// case "bnz":
+	// r = scanInt();
+	// x = scan();
+	// return new Bnz(label, r, x);
+	// }
+	// return null;
+	// }
+	// -----
 
 	/*
 	 * Return the first word of line and remove it from line. If there is no
 	 * word, return ""
 	 */
 	private String scan() {
-		line = line.trim(); 
-		System.out.println("trimmed spaces off line: " + line);//print this for viewing
+		line = line.trim();
+		System.out.println("trimmed spaces off line: " + line);// print this for
+																// viewing
 		if (line.length() == 0)
 			return "";
 
 		int i = 0;
-		while (i < line.length() && line.charAt(i) != ' ' && line.charAt(i) != '\t') {
+		while (i < line.length() && line.charAt(i) != ' '
+				&& line.charAt(i) != '\t') {
 			i = i + 1;
 		}
 		String word = line.substring(0, i);
-		System.out.println("word: " + word); //for viewing execution.
+		System.out.println("word: " + word); // for viewing execution.
 		line = line.substring(i);
 		return word;
 	}
@@ -190,7 +198,7 @@ public class Translator {
 	// any error, return the maximum int
 	private int scanInt() {
 		String word = scan();
-		System.out.println("int: " + word); //for viewing execution.
+		System.out.println("int: " + word); // for viewing execution.
 		if (word.length() == 0) {
 			return Integer.MAX_VALUE;
 		}

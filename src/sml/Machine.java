@@ -2,6 +2,7 @@ package sml;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import lombok.Data;
 
 /*
@@ -35,7 +36,6 @@ public class Machine {
 
 	public static void main(String[] args) {
 		System.out.println("Enter the name of your program (remember to include the extenstion).");
-		@SuppressWarnings("resource")
 		String nameOfProgram = new Scanner(System.in).nextLine();
 		
 		Machine m = new Machine();

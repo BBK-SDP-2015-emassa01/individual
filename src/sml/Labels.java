@@ -21,7 +21,7 @@ public class Labels {
 	public int addLabel(String lab) {
 		try {
 			if (labels.contains(lab)) {
-				System.out.println("\nDuplicate labels exist in the program.\nThis is not allowed. \nThis instruction will be skipped.\n");
+				System.out.println("\nDuplicate labels exist in the program.\nThis is not allowed. \nThis will be skipped.\n");
 			}
 		} catch (UnsupportedOperationException UOE) {
 			System.out.println("Something went wrong pertaining to an Illegal Argument: "+ UOE.getMessage());
