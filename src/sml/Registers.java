@@ -1,5 +1,7 @@
 package sml;
 
+import java.util.NoSuchElementException;
+
 import lombok.Data;
 
 /**
@@ -33,7 +35,13 @@ public class Registers {
 	// Precondition: 0 <= i <= NUMBEROFREGISTERS
 
 	public void setRegister(int i, int v) {
-		registers[i] = v;
+		if ((i > 0) && (i < 33)) {
+				System.out.println ("register OK:"+i);
+				registers[i] = v;		
+		}else {
+			System.out.println("Warning! Your program attemped to save to a register that does not exist.\nCannot complete the operation. \nExiting program.");
+			System.exit(0);
+			}
 	}
 
 	public int getRegister(int i) {
