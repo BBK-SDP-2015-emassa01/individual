@@ -76,6 +76,15 @@ public class Translator {
 	// removed. Translate line into an instruction with label label
 	// and return the instruction
 	public Instruction getInstruction(String label) {
+		/* This method uses the fileName, to scan the instructions in the lines of the program.
+		*  for each Instruction Class, will find the right number of parameters (required for the 
+		*  constructor of the class), and will return the Class constructor with the correct number of
+		*  parameters to declare it.
+		*  Now I will use reflection to do this.
+		*/
+		
+		System.out.println("Reflecting...");
+
 		int s1; // Possible operands of the instruction
 		int s2;
 		int r;
