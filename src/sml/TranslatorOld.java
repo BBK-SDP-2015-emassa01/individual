@@ -8,9 +8,11 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /*
- * The translator of a <b>S</b><b>M</b>al<b>L</b> program.
+ * The OLD translator class for the <b>S</b><b>M</b>al<b>L</b> program.
+ * Storing in case a back track is needed.
+ * 
  */
-public class Translator {
+public class TranslatorOld {
 
 	// word + line is the part of the current line that's not yet processed
 	// word has no whitespace
@@ -22,7 +24,7 @@ public class Translator {
 
 	private static final String SRC = "src";
 	
-	public Translator(String fileName) {
+	public TranslatorOld(String fileName) {
 		System.out.println("TranslatorClass");
 		this.fileName = SRC + "/" + fileName;
 	}
