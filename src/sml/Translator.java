@@ -80,6 +80,10 @@ public class Translator {
 	// removed. Translate line into an instruction with label label
 	// and return the instruction
 	public Instruction getInstruction(String label) {
+		
+		if (line.equals("")) {
+			return null;
+		}
 		/*
 		 * This method uses the fileName, to scan the instructions in the lines
 		 * of the program. for each Instruction Class, will find the right
@@ -89,6 +93,10 @@ public class Translator {
 		 */
 
 		System.out.println("Reflecting...");
+		
+		
+		//get the filename and convert it to classname
+
 		try {
 			Class<?> theInstructionClassArguments = Class.forName("sml."+ fileName);
 			// so we have a class - lets create an instance of it.
