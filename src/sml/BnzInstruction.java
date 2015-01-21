@@ -11,11 +11,11 @@ public class BnzInstruction extends Instruction {
 	private int result;
 	private String labelNext;
 
-	public BnzInstruction(String label, String opcode) {
-		super(label, opcode);
-		System.out.println("BnzClass");
-		System.out.println("And the label is: "+ label);
-	}
+//	public BnzInstruction(String label, String opcode) {
+//		super(label, opcode);
+//		System.out.println("BnzClass");
+//		System.out.println("And the label is: "+ label);
+//	}
 
 	public BnzInstruction(String label, int register, String labelNext) {
 		super(label, "bnz");

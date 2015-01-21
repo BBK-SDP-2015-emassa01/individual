@@ -99,22 +99,23 @@ public class Translator {
 
 		System.out.println("Reflecting...");
 
+		Object InstructionObject = null;
 		try {
 			Class<?> theInstructionClassArguments = Class.forName("sml."+ ClassInstruction);
 			// so we have a class - lets create an instance of it.
 
-			Object InstructionObject;
+			
 			try {
 				// Using example here:
 				// http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
-				Class<?> aClass = Class.forName("src."+ fileName);
+				Class<?> aClass = Class.forName("sml."+ ClassInstruction);
 				Constructor<?>[] allInstructionConstructors = aClass.getDeclaredConstructors();
 				for (Constructor<?> c : allInstructionConstructors) {
 					Class<?>[] parameterTypes = c.getParameterTypes();
 					for (int i = 0; i < parameterTypes.length; i++) {
 						if (parameterTypes[i]
 								.equals(theInstructionClassArguments)) {
-							InstructionObject = c.newInstance();
+							InstructionObject = c.newInstance(parameterTypes[i]);
 							return (Instruction) InstructionObject;
 						}
 					}
@@ -128,7 +129,8 @@ public class Translator {
 			e.printStackTrace();
 			System.err.println("It's all gone wrong.");
 		}
-		return null;
+		//System.out.println(InstructionObject.toString());
+		return (Instruction) InstructionObject;
 	}
 
 	// -----

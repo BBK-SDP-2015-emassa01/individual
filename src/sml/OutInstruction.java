@@ -10,10 +10,10 @@ public class OutInstruction extends Instruction {
 	private int register;
 	private int result;
 
-	public OutInstruction(String label, String opcode) {
-		super(label, opcode);
-		System.out.println("OutClass");
-	}
+//	public OutInstruction(String label, String opcode) {
+//		super(label, opcode);
+//		System.out.println("OutClass");
+//	}
 
 	public OutInstruction(String label, int register) {
 		super(label, "out");
