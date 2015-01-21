@@ -36,7 +36,7 @@ public class Bnz extends Instruction {
 			//Get the Instruction, by finding the element of the ArrayList that 
 			//holds the instruction of the next label
 			
-			System.out.println("labelNext element: "+m.getProg().indexOf(labelNext));
+			System.out.println("labelNext element: "+m.getLabels().indexOf(labelNext));
 			System.out.println("labelNext: " + labelNext);
 			//we are continuing with the program so we must 
 			//set the program counter.
