@@ -99,13 +99,15 @@ public class Translator {
 
 		System.out.println("Reflecting...");
 
-		Object InstructionObject = null;
+		
 		try {
 			Class<?> theInstructionClassArguments = Class.forName("sml."+ ClassInstruction);
 			// so we have a class - lets create an instance of it.
 
 			
 			try {
+				
+				Object InstructionObject;
 				// Using example here:
 				// http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
 				Class<?> aClass = Class.forName("sml."+ ClassInstruction);
@@ -115,11 +117,12 @@ public class Translator {
 					for (int i = 0; i < parameterTypes.length; i++) {
 						if (parameterTypes[i]
 								.equals(theInstructionClassArguments)) {
-							InstructionObject = c.newInstance(parameterTypes[i]);
-							return (Instruction) InstructionObject;
+							InstructionObject = c.newInstance();
+							//return (Instruction) InstructionObject;
 						}
 					}
 				}
+				return (Instruction) InstructionObject;
 			} catch (InstantiationException | IllegalAccessException
 					| IllegalArgumentException | InvocationTargetException e) {
 				e.printStackTrace();
@@ -129,8 +132,8 @@ public class Translator {
 			e.printStackTrace();
 			System.err.println("It's all gone wrong.");
 		}
-		//System.out.println(InstructionObject.toString());
-		return (Instruction) InstructionObject;
+		//System.out.println(InstructionObject.toString()); it's null.
+		return null;
 	}
 
 	// -----
