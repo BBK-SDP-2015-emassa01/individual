@@ -3,6 +3,7 @@ package sml;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -21,6 +22,8 @@ public class Translator {
 
 	private static final String SRC = "src";
 	
+	private List<Labels> labelChecker = new ArrayList<Labels>();
+	
 	public Translator(String fileName) {
 		System.out.println("TranslatorClass");
 		this.fileName = SRC + "/" + fileName;
@@ -30,6 +33,12 @@ public class Translator {
 	// prog (the program)
 	// return "no errors were detected"
 	public boolean readAndTranslate(Labels lab, ArrayList<Instruction> prog) {
+		
+		labelChecker.add(lab); 
+		if (labelChecker.contains(lab)){
+			System.out.println("Duplicate labels exist in the program. "
+					+ "\nThis is not allowed. \nThis instruction will be skipped.");
+		}
 
 		try (Scanner sc = new Scanner(new File(fileName))) {
 			// Scanner attached to the file chosen by the user
