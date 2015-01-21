@@ -2,6 +2,9 @@ package sml;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -84,54 +87,85 @@ public class Translator {
 		*/
 		
 		System.out.println("Reflecting...");
-
-		int s1; // Possible operands of the instruction
-		int s2;
-		int r;
-		String x;
-
-		if (line.equals(""))
-			return null;
-
-		String ins = scan();
-		switch (ins) {
-		case "add":
-			r = scanInt();
-			s1 = scanInt();
-			s2 = scanInt();
-			return new AddInstruction(label, r, s1, s2);
-		case "lin":
-			r = scanInt();
-			s1 = scanInt();
-			return new LinInstruction(label, r, s1);
-		case "sub":
-			r = scanInt();
-			s1 = scanInt();
-			s2 = scanInt();
-			return new SubInstruction(label, r, s1, s2);
-		case "mul":
-			r = scanInt();
-			s1 = scanInt();
-			s2 = scanInt();
-			return new MulInstruction(label, r, s1, s2);
-		case "div":
-			r = scanInt();
-			s1 = scanInt();
-			s2 = scanInt();
-			System.out.println("String:"+ins+" label: " + label + ", r: "+ r + " s1: " + s1 + ", s2: " + s2);
-			return new DivInstruction(label, r, s1, s2);
-		case "out":
-			r = scanInt();
-			s1 = scanInt();
-			s2 = scanInt();
-			return new Out(label, r);
-		case "bnz":
-			r = scanInt();
-			x = scan();
-			return new Bnz(label, r, x);
+		try{
+		Class<?> theInstructionClass = Class.forName("src."+fileName);
+		//<?> is a raw type so if you don't put it, it will complain a little, but still compile!
+		//not good to leave it out.
+		//so we have a class - lets create an instance of it.
+		
+		try {
+			Constructor<?> InstructionConstructor = theInstructionClass.getConstructor(String.class,String.class);
+			Object InstructionObject;
+			try {
+				InstructionObject = InstructionConstructor.newInstance("Esha", "111");
+				//this throws an IllegalAccessException and InstantiationExceptions if no nullary constructor
+				//should create a newInstance of the class.
+				System.out.println(InstructionObject);
+				
+				Class<? extends Object> c = InstructionObject.getClass();
+				
+				Method m = c.getMethod("setName", new Class[]{String.class});//setName is a method we want to invoke, and String.class is the Parameter that it takes in.
+				m.invoke(InstructionObject, new Object[]{"ohmygod"}); //m  is the method we want to invoke on object p. OhmyGod is the name we want to set. New Object because we don't know what parameters it takes in.
+				System.out.println(InstructionObject);	
+			} catch (IllegalArgumentException | InvocationTargetException e) {
+				e.printStackTrace();
+			}	
+		} catch (NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
 		}
-		return null;
+	} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+		e.printStackTrace();
+		System.err.println("It's all gone wrong.");
 	}
+//-----
+//		int s1; // Possible operands of the instruction
+//		int s2;
+//		int r;
+//		String x;
+//
+//		if (line.equals(""))
+//			return null;
+//
+//		String ins = scan();
+//		switch (ins) {
+//		case "add":
+//			r = scanInt();
+//			s1 = scanInt();
+//			s2 = scanInt();
+//			return new AddInstruction(label, r, s1, s2);
+//		case "lin":
+//			r = scanInt();
+//			s1 = scanInt();
+//			return new LinInstruction(label, r, s1);
+//		case "sub":
+//			r = scanInt();
+//			s1 = scanInt();
+//			s2 = scanInt();
+//			return new SubInstruction(label, r, s1, s2);
+//		case "mul":
+//			r = scanInt();
+//			s1 = scanInt();
+//			s2 = scanInt();
+//			return new MulInstruction(label, r, s1, s2);
+//		case "div":
+//			r = scanInt();
+//			s1 = scanInt();
+//			s2 = scanInt();
+//			System.out.println("String:"+ins+" label: " + label + ", r: "+ r + " s1: " + s1 + ", s2: " + s2);
+//			return new DivInstruction(label, r, s1, s2);
+//		case "out":
+//			r = scanInt();
+//			s1 = scanInt();
+//			s2 = scanInt();
+//			return new Out(label, r);
+//		case "bnz":
+//			r = scanInt();
+//			x = scan();
+//			return new Bnz(label, r, x);
+//		}
+//		return null;
+//	}
+//-----		
 
 	/*
 	 * Return the first word of line and remove it from line. If there is no
