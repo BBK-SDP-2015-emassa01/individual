@@ -107,22 +107,26 @@ public class Translator {
 			
 			try {
 				
-				Object InstructionObject;
+				Object InstructionObject = null;
+				Class<?>[] parameterTypes;
 				// Using example here:
 				// http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
 				Class<?> aClass = Class.forName("sml."+ ClassInstruction);
 				Constructor<?>[] allInstructionConstructors = aClass.getDeclaredConstructors();
 				for (Constructor<?> c : allInstructionConstructors) {
-					Class<?>[] parameterTypes = c.getParameterTypes();
+					parameterTypes = c.getParameterTypes();
 					for (int i = 0; i < parameterTypes.length; i++) {
 						if (parameterTypes[i]
 								.equals(theInstructionClassArguments)) {
-							InstructionObject = c.newInstance();
-							//return (Instruction) InstructionObject;
-						}
+							Class<?> parameters = parameterTypes[i];
+							InstructionObject = c.newInstance(parameters);
+							System.out.println("Parameters: "+parameters);
+							return (Instruction) InstructionObject;
+						} else System.out.println("Didn't find it.");
 					}
 				}
-				return (Instruction) InstructionObject;
+				
+				//return (Instruction) c.newInstance(parameters);
 			} catch (InstantiationException | IllegalAccessException
 					| IllegalArgumentException | InvocationTargetException e) {
 				e.printStackTrace();
