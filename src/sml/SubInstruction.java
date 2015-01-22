@@ -20,7 +20,7 @@ public class SubInstruction extends Instruction {
 //		super(l, op);
 //		System.out.println("SubInstructionClass");
 //	}
-//	
+	
 	public SubInstruction(String label, int result, int op1, int op2) {
 		super(label, "sub");
 		this.result = result;

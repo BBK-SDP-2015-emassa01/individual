@@ -115,13 +115,18 @@ public class Translator {
 					//now get the parameters needed for the constructor
 					Object[] parametersForConstructor = new Object [theConstructor.getParameters().length];
 					
-					for (int i = 0; i < theConstructor.getParameters().length; i++) {
+					parametersForConstructor[0] = label;
+					
+					for (int i = 1; i < theConstructor.getParameters().length; i++) {
+
 						System.out.println("ParameterTypes :"+ theConstructor.getParameterTypes());
 						if (theConstructor.getParameters()[i].getType().equals(java.lang.String.class)) {
 							System.out.println("It's a String");
 							String parameterString = scan();
+							//String parameterString = savedScan;
 							System.out.println("Parameter String: "+parameterString);
 							parametersForConstructor[i] =  parameterString;
+							
 						} 
 						else if (theConstructor.getParameters()[i].getType().equals(int.class)) {
 							System.out.println("It's an int");
@@ -131,13 +136,24 @@ public class Translator {
 						else {
 							System.out.println("Didn't find it.");
 						}
+						//System.out.println("Parameters for Constructor: "+ parametersForConstructor.toString());
 				}
+					
+					
+					try {
+						return (Instruction) theConstructor.newInstance(parametersForConstructor);
+						
+					} catch (InstantiationException | IllegalAccessException
+							| IllegalArgumentException
+							| InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 		}catch (ClassNotFoundException e){
 				e.printStackTrace();
 				System.err.println("It's all gone wrong.");
-				
 			}
-		
 		return null;
 	}
 
