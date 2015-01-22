@@ -110,9 +110,7 @@ public class Translator {
 			try {
 				
 				Object InstructionObject = null;
-				Object[] parameterTypes = null;;
-				
-				
+	
 				// Using example here:
 				// http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
 				// https://www.youtube.com/watch?v=agnblS47F18 Derek Banas Youtube
@@ -120,28 +118,28 @@ public class Translator {
 				Class<?> aClass = Class.forName("sml."+ ClassInstruction);
 				Constructor<?>[] allInstructionConstructors = aClass.getDeclaredConstructors();
 				
+				Constructor<?> theConstructor = allInstructionConstructors[0];
+				System.out.println("Constructor Chosen: "+ theConstructor);
+				System.out.println("Constructor Parameters: "+ theConstructor.getParameters().toString());
 				
-				for (Constructor<?> c : allInstructionConstructors) {
-					System.out.println("Constructors :"+ c); // c is my constructor!
-					
 					//now get the parameters needed for the constructor
-					parameterTypes = c.getParameterTypes();
+					Object[] parametersForConstructor = new Object [theConstructor.getParameters().length];
 					
-					Parameter[] parametersForConstructor = new Parameter[parameterTypes.length];
-					
-					for (int i = 0; i < parameterTypes.length; i++) {
-						System.out.println("ParameterTypes :"+ parameterTypes);
-						if (parameterTypes[i].getType().equals(java.lang.String.class)) {
-							
+					for (int i = 0; i < theConstructor.getParameters().length; i++) {
+						System.out.println("ParameterTypes :"+ theConstructor.getParameterTypes());
+						if (theConstructor.getParameters()[i].getType().equals(java.lang.String.class)) {
+							System.out.println("It's a String");
 							String parameterString = scan();
+							System.out.println("Parameter String: "+parameterString);
 							parametersForConstructor[i] =  parameterString;
 						} 
-						else if (parameterTypes[i]
-									.equals(int.class)) {
-								
+						else if (theConstructor.getParameters()[i].getType().equals(int.class)) {
+							System.out.println("It's an int");
 								int parameterInt = scanInt();
 								parametersForConstructor[i] = parameterInt;
 						}
+						else {
+							System.out.println("Didn't find it.");
 						}
 				}
 			} catch (ClassNotFoundException e){
@@ -155,65 +153,6 @@ public class Translator {
 		}
 		return null;
 	}
-					
-
-//			e.printStackTrace();
-//			System.err.println("It's all gone wrong.");
-		
-		//System.out.println(InstructionObject.toString()); it's null.
-
-
-
-	// -----
-	// int s1; // Possible operands of the instruction
-	// int s2;
-	// int r;
-	// String x;
-	//
-	// if (line.equals(""))
-	// return null;
-	//
-	// String ins = scan();
-	// switch (ins) {
-	// case "add":
-	// r = scanInt();
-	// s1 = scanInt();
-	// s2 = scanInt();
-	// return new AddInstruction(label, r, s1, s2);
-	// case "lin":
-	// r = scanInt();
-	// s1 = scanInt();
-	// return new LinInstruction(label, r, s1);
-	// case "sub":
-	// r = scanInt();
-	// s1 = scanInt();
-	// s2 = scanInt();
-	// return new SubInstruction(label, r, s1, s2);
-	// case "mul":
-	// r = scanInt();
-	// s1 = scanInt();
-	// s2 = scanInt();
-	// return new MulInstruction(label, r, s1, s2);
-	// case "div":
-	// r = scanInt();
-	// s1 = scanInt();
-	// s2 = scanInt();
-	// System.out.println("String:"+ins+" label: " + label + ", r: "+ r +
-	// " s1: " + s1 + ", s2: " + s2);
-	// return new DivInstruction(label, r, s1, s2);
-	// case "out":
-	// r = scanInt();
-	// s1 = scanInt();
-	// s2 = scanInt();
-	// return new Out(label, r);
-	// case "bnz":
-	// r = scanInt();
-	// x = scan();
-	// return new Bnz(label, r, x);
-	// }
-	// return null;
-	// }
-	// -----
 
 	/*
 	 * Return the first word of line and remove it from line. If there is no
