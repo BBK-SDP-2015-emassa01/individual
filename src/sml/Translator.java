@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -101,44 +102,67 @@ public class Translator {
 
 		
 		try {
-			Class<?> theInstructionClassArguments = Class.forName("sml."+ ClassInstruction);
+			Class<?> theInstructionClass = Class.forName("sml."+ ClassInstruction);
 			// so we have a class - lets create an instance of it.
+			System.out.println("Class Instruction:"+ ClassInstruction);
 
 			
 			try {
 				
 				Object InstructionObject = null;
-				Class<?>[] parameterTypes;
+				Object[] parameterTypes = null;;
+				
+				
 				// Using example here:
 				// http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
+				// https://www.youtube.com/watch?v=agnblS47F18 Derek Banas Youtube
+			
 				Class<?> aClass = Class.forName("sml."+ ClassInstruction);
 				Constructor<?>[] allInstructionConstructors = aClass.getDeclaredConstructors();
-				for (Constructor<?> c : allInstructionConstructors) {
-					parameterTypes = c.getParameterTypes();
-					for (int i = 0; i < parameterTypes.length; i++) {
-						if (parameterTypes[i]
-								.equals(theInstructionClassArguments)) {
-							Class<?> parameters = parameterTypes[i];
-							InstructionObject = c.newInstance(parameters);
-							System.out.println("Parameters: "+parameters);
-							return (Instruction) InstructionObject;
-						} else System.out.println("Didn't find it.");
-					}
-				}
 				
-				//return (Instruction) c.newInstance(parameters);
-			} catch (InstantiationException | IllegalAccessException
-					| IllegalArgumentException | InvocationTargetException e) {
+				
+				for (Constructor<?> c : allInstructionConstructors) {
+					System.out.println("Constructors :"+ c); // c is my constructor!
+					
+					//now get the parameters needed for the constructor
+					parameterTypes = c.getParameterTypes();
+					
+					Parameter[] parametersForConstructor = new Parameter[parameterTypes.length];
+					
+					for (int i = 0; i < parameterTypes.length; i++) {
+						System.out.println("ParameterTypes :"+ parameterTypes);
+						if (parameterTypes[i].getType().equals(java.lang.String.class)) {
+							
+							String parameterString = scan();
+							parametersForConstructor[i] =  parameterString;
+						} 
+						else if (parameterTypes[i]
+									.equals(int.class)) {
+								
+								int parameterInt = scanInt();
+								parametersForConstructor[i] = parameterInt;
+						}
+						}
+				}
+			} catch (ClassNotFoundException e){
 				e.printStackTrace();
 				System.err.println("It's all gone wrong.");
+				
 			}
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e){
 			e.printStackTrace();
 			System.err.println("It's all gone wrong.");
 		}
-		//System.out.println(InstructionObject.toString()); it's null.
 		return null;
 	}
+					
+
+//			e.printStackTrace();
+//			System.err.println("It's all gone wrong.");
+		
+		//System.out.println(InstructionObject.toString()); it's null.
+
+
 
 	// -----
 	// int s1; // Possible operands of the instruction
