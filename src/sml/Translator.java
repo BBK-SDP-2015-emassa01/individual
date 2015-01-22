@@ -102,25 +102,15 @@ public class Translator {
 
 		
 		try {
-			Class<?> theInstructionClass = Class.forName("sml."+ ClassInstruction);
-			// so we have a class - lets create an instance of it.
-			System.out.println("Class Instruction:"+ ClassInstruction);
-
-			
-			try {
-				
-				Object InstructionObject = null;
-	
-				// Using example here:
-				// http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
-				// https://www.youtube.com/watch?v=agnblS47F18 Derek Banas Youtube
-			
-				Class<?> aClass = Class.forName("sml."+ ClassInstruction);
-				Constructor<?>[] allInstructionConstructors = aClass.getDeclaredConstructors();
-				
-				Constructor<?> theConstructor = allInstructionConstructors[0];
-				System.out.println("Constructor Chosen: "+ theConstructor);
-				System.out.println("Constructor Parameters: "+ theConstructor.getParameters().toString());
+			// Using example here:
+			// http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
+			// https://www.youtube.com/watch?v=agnblS47F18 Derek Banas Youtube
+			Class<?> aClass = Class.forName("sml."+ ClassInstruction);
+			Constructor<?>[] allInstructionConstructors = aClass.getDeclaredConstructors();
+			Object InstructionObject = null;
+			Constructor<?> theConstructor = allInstructionConstructors[0];
+			System.out.println("Constructor Chosen: "+ theConstructor);
+			System.out.println("Constructor Parameters: "+ theConstructor.getParameters().toString());
 				
 					//now get the parameters needed for the constructor
 					Object[] parametersForConstructor = new Object [theConstructor.getParameters().length];
@@ -142,17 +132,15 @@ public class Translator {
 							System.out.println("Didn't find it.");
 						}
 				}
-			} catch (ClassNotFoundException e){
+		}catch (ClassNotFoundException e){
 				e.printStackTrace();
 				System.err.println("It's all gone wrong.");
 				
 			}
-		} catch (ClassNotFoundException e){
-			e.printStackTrace();
-			System.err.println("It's all gone wrong.");
-		}
+		
 		return null;
 	}
+
 
 	/*
 	 * Return the first word of line and remove it from line. If there is no
