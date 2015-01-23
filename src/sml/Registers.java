@@ -4,9 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * This class ....
- * 
- * An instance contains 32 registers and methods to access and change them
+ * An instance of this class contains 32 registers and methods to access and change them.
  * 
  * @author Esha Massand
  */
