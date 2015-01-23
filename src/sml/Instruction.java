@@ -18,8 +18,6 @@ public abstract class Instruction {
 	// Constructor: an instruction with label l and opcode op
 	// (op must be an operation of the language)
 	public Instruction(String l, String op) {
-		//if l is the name of a class that extends the Instruction class, then it is a legal label.
-		System.out.println("InstructionsClass");
 		this.label = l;
 		this.opcode = op;
 	}

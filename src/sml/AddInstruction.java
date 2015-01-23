@@ -4,7 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * This class ....
+ * This class adds the contents of registers op1 and op2 and stores the result in
+ * register r, given the Instruction format: Label add r op1 op2
  * 
  * @author Esha Massand
  */
@@ -15,11 +16,6 @@ public class AddInstruction extends Instruction {
 	private int result;
 	private int op1;
 	private int op2;
-
-//	public AddInstruction(String label, String op) {
-//		super(label, op);
-//		System.out.println("AddInstructionClass");
-//	}
 
 	public AddInstruction(String label, int result, int op1, int op2) {
 		super(label, "add");

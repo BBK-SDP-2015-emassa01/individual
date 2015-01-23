@@ -43,8 +43,6 @@ public class Translator {
 
 			try {
 				line = sc.nextLine();
-				System.out.println("line: " + line); // for purposes of viewing
-														// program execution.
 			} catch (NoSuchElementException ioE) {
 				return false;
 			}
@@ -86,10 +84,8 @@ public class Translator {
 		
 		//get the filename and convert it to classname
 		String ClassInstruction = scan() + "Instruction";
-		System.out.println(ClassInstruction);//this gives 'linInstruction'
 		ClassInstruction = ClassInstruction.substring(0,1).toUpperCase() + ClassInstruction.substring(1, ClassInstruction.length());
-		System.out.println(ClassInstruction);
-			
+
 		/*
 		 * This method uses the fileName, to scan the instructions in the lines
 		 * of the program. for each Instruction Class, will find the right

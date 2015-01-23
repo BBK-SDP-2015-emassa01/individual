@@ -1,8 +1,9 @@
 package sml;
 
 /**
- * This class ....
- * 
+ * This class checks if the contents of register r is not zero, then 
+ * makes the statement labelled Label2 the next one to execute
+ * Instruction Format: Label1 bnz r Label2
  * @author Esha Massand
  */
 
@@ -10,12 +11,6 @@ public class BnzInstruction extends Instruction {
 	private int register;
 	private int result;
 	private String labelNext;
-
-//	public BnzInstruction(String label, String opcode) {
-//		super(label, opcode);
-//		System.out.println("BnzClass");
-//		System.out.println("And the label is: "+ label);
-//	}
 
 	public BnzInstruction(String label, int register, String labelNext) {
 		super(label, "bnz");
@@ -28,25 +23,10 @@ public class BnzInstruction extends Instruction {
 		result = m.getRegisters().getRegister(register);
 		if(result != 0){
 			//make the labelNext be the next instruction to execute
-			System.out.println(super.toString() + " register " + register + " value is " + result + ".\n"
-					+ "Skipping to the next instruction specified within the bnz instruction.");
-		
-			System.out.println(m.getLabels());
 			
-			//Get the Instruction, by finding the element of the ArrayList that 
-			//holds the instruction of the next label
-			
-			System.out.println("labelNext element: "+m.getLabels().indexOf(labelNext));
-			System.out.println("labelNext: " + labelNext);
-			//we are continuing with the program so we must 
 			//set the program counter.
 			m.setPc(m.getLabels().indexOf(labelNext)); 
-		} else {
-			//do nothing
-			System.out.println(super.toString() + " register " + register + " value is " + result + ".\n"
-					+ "Continuing with the program execution.");
 		}
-		
 	}
 
 	@Override

@@ -28,7 +28,6 @@ public class Machine {
 	private int pc; 
 
 	{
-		System.out.println("MachineClass");
 		labels = new Labels();
 		prog = new ArrayList<>();
 		pc = 0;
@@ -74,7 +73,6 @@ public class Machine {
 			Instruction ins = getProg().get(getPc());
 			setPc(getPc() + 1);
 			ins.execute(this);
-			System.out.println("machine this: "+ this);
 		}
 	}
 

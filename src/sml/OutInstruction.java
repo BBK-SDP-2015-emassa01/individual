@@ -1,7 +1,8 @@
 package sml;
 
 /**
- * This class ....
+ * This class prints on the console the value in
+ * register s1, given the Instruction format: Label1 out s1
  * 
  * @author Esha Massand
  */
@@ -9,11 +10,6 @@ package sml;
 public class OutInstruction extends Instruction {
 	private int register;
 	private int result;
-
-//	public OutInstruction(String label, String opcode) {
-//		super(label, opcode);
-//		System.out.println("OutClass");
-//	}
 
 	public OutInstruction(String label, int register) {
 		super(label, "out");
@@ -26,7 +22,7 @@ public class OutInstruction extends Instruction {
 		System.out.println(super.toString() + " register " + register + " value is " + result);
 	}
 	
-	/* No overridden to String() method, as the 'execute' will print (using System.out.println()) the register values, and 
-	*  no other functionality is required beyond he toString() method in the Parent Class, as specified by the course-work description. 
+	/* No overridden to String() method -- System.out.println().
+	*  No other functionality is required. 
 	*/
 }

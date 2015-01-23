@@ -4,7 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * This class ....
+ * This class multiplies the contents of registers op1 and op2 and stores the result in
+ * register r, given the Instruction format: Label mul r op1 op2
  * 
  * @author Esha Massand
  */
@@ -15,11 +16,6 @@ public class MulInstruction extends Instruction {
 	private int result;
 	private int op1;
 	private int op2;
-
-//	public MulInstruction(String label, String op) {
-//		super(label, op);
-//		System.out.println("MulInstructionsClass");
-//	}
 	
 	public MulInstruction(String label, int result, int op1, int op2) {
 		super(label, "mul");
