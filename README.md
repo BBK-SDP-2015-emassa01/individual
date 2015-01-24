@@ -1,10 +1,20 @@
 # individual
 SML project
+SUMMARY:
+--> The SML is an interpreter for a simple machine language SML. The general form of a machine language instruction is
+label instruction register-list.
+--> SML uses Java refection to create the instances of the subclasses. The SML language to be extended without having to modify
+the original code.
+--> ERROR CHECKING
+Duplicate labels are not allowed.
+Registers are only allowed in the range 0-31
+--> TESTING
+* As the project required the modification of existing code, there was no Test Driven Development.
+* I started testing this project using System.out.println statements and this was more comprehensively tested with the use of J-Unit tests which helped to identify the sources of code-errors.
 
 WHAT THE SML DOES
-
-The SML is an interpreter for a simple machine language SML. The general form of a machine language instruction is
-label instruction register-list
+The general form of a machine language instruction is
+'label instruction register-list'
 where;
 label: is the label for the line. Other instructions might \jump" to that label.
 instruction: is the actual instruction.
@@ -29,19 +39,8 @@ L1 is any identifier, actually, any sequence of non-whitespace characters.
 Each statement of a program must be labeled with a different identifer.
 Each of s1, s2, and r is an integer in the range 0. . . 31 and refers to one of the 32 registers in the machine that executes language SML.
 
-
 SML uses Java refection to create the instances of the subclasses. The SML language to be extended without having to modify
 the original code.
-
-ERROR CHECKING
-Duplicate labels are not allowed.
-Registers are only allowed in the range 0-31
-
-TESTING
-As the project required the modification of existing code, there was no Test Driven Development.
-
-I started testing this project using System.out.println statements and this was more comprehensively tested with the use of J-Unit tests 
-which helped to identify the sources of code-errors.
 
 Thanks & Enjoy!
 
