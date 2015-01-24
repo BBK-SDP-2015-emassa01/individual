@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -25,7 +24,6 @@ public class Translator {
 	private static final String SRC = "src";
 
 	public Translator(String fileName) {
-		System.out.println("TranslatorClass");
 		this.fileName = SRC + "/" + fileName;
 	}
 
@@ -77,14 +75,15 @@ public class Translator {
 	// removed. Translate line into an instruction with label label
 	// and return the instruction
 	public Instruction getInstruction(String label) {
-		
+
 		if (line.equals("")) {
 			return null;
 		}
-		
-		//get the filename and convert it to classname
+
+		// get the filename and convert it to classname
 		String ClassInstruction = scan() + "Instruction";
-		ClassInstruction = ClassInstruction.substring(0,1).toUpperCase() + ClassInstruction.substring(1, ClassInstruction.length());
+		ClassInstruction = ClassInstruction.substring(0, 1).toUpperCase()
+				+ ClassInstruction.substring(1, ClassInstruction.length());
 
 		/*
 		 * This method uses the fileName, to scan the instructions in the lines
@@ -94,65 +93,52 @@ public class Translator {
 		 * parameters to declare it. Now I will use reflection to do this.
 		 */
 
-		System.out.println("Reflecting...");
-
-		
 		try {
 			// Using example here:
 			// http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
 			// https://www.youtube.com/watch?v=agnblS47F18 Derek Banas Youtube
-			Class<?> aClass = Class.forName("sml."+ ClassInstruction);
-			Constructor<?>[] allInstructionConstructors = aClass.getDeclaredConstructors();
-			Object InstructionObject = null;
+			Class<?> aClass = Class.forName("sml." + ClassInstruction);
+			Constructor<?>[] allInstructionConstructors = aClass
+					.getDeclaredConstructors();
 			Constructor<?> theConstructor = allInstructionConstructors[0];
-			System.out.println("Constructor Chosen: "+ theConstructor);
-			System.out.println("Constructor Parameters: "+ theConstructor.getParameters().toString());
-				
-					//now get the parameters needed for the constructor
-					Object[] parametersForConstructor = new Object [theConstructor.getParameters().length];
-					
-					parametersForConstructor[0] = label;
-					
-					for (int i = 1; i < theConstructor.getParameters().length; i++) {
 
-						System.out.println("ParameterTypes :"+ theConstructor.getParameterTypes());
-						if (theConstructor.getParameters()[i].getType().equals(java.lang.String.class)) {
-							System.out.println("It's a String");
-							String parameterString = scan();
-							//String parameterString = savedScan;
-							System.out.println("Parameter String: "+parameterString);
-							parametersForConstructor[i] =  parameterString;
-							
-						} 
-						else if (theConstructor.getParameters()[i].getType().equals(int.class)) {
-							System.out.println("It's an int");
-								int parameterInt = scanInt();
-								parametersForConstructor[i] = parameterInt;
-						}
-						else {
-							System.out.println("Didn't find it.");
-						}
-						//System.out.println("Parameters for Constructor: "+ parametersForConstructor.toString());
+			// now get the parameters needed for the constructor
+			Object[] parametersForConstructor = new Object[theConstructor
+					.getParameters().length];
+
+			parametersForConstructor[0] = label;
+
+			for (int i = 1; i < theConstructor.getParameters().length; i++) {
+				if (theConstructor.getParameters()[i].getType().equals(
+						java.lang.String.class)) {
+					String parameterString = scan();
+					parametersForConstructor[i] = parameterString;
+
+				} else if (theConstructor.getParameters()[i].getType().equals(
+						int.class)) {
+					int parameterInt = scanInt();
+					parametersForConstructor[i] = parameterInt;
+				} else {
+					System.out.println("Didn't find it.");
 				}
-					
-					
-					try {
-						return (Instruction) theConstructor.newInstance(parametersForConstructor);
-						
-					} catch (InstantiationException | IllegalAccessException
-							| IllegalArgumentException
-							| InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-		}catch (ClassNotFoundException e){
-				e.printStackTrace();
-				System.err.println("It's all gone wrong.");
 			}
+
+			try {
+				return (Instruction) theConstructor
+						.newInstance(parametersForConstructor);
+
+			} catch (InstantiationException | IllegalAccessException
+					| IllegalArgumentException | InvocationTargetException e) {
+				System.out.println("I can't do/create/access that!");
+				e.printStackTrace();
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.err.println("It's all gone wrong.");
+		}
 		return null;
 	}
-
 
 	/*
 	 * Return the first word of line and remove it from line. If there is no
@@ -160,8 +146,6 @@ public class Translator {
 	 */
 	private String scan() {
 		line = line.trim();
-		System.out.println("trimmed spaces off line: " + line);// print this for
-																// viewing
 		if (line.length() == 0)
 			return "";
 
@@ -171,7 +155,6 @@ public class Translator {
 			i = i + 1;
 		}
 		String word = line.substring(0, i);
-		System.out.println("word: " + word); // for viewing execution.
 		line = line.substring(i);
 		return word;
 	}
@@ -180,7 +163,6 @@ public class Translator {
 	// any error, return the maximum int
 	private int scanInt() {
 		String word = scan();
-		System.out.println("int: " + word); // for viewing execution.
 		if (word.length() == 0) {
 			return Integer.MAX_VALUE;
 		}
