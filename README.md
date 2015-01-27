@@ -17,6 +17,9 @@ Registers are only allowed in the range 0-31
 * As the project required the modification of existing code, there was no Test Driven Development.
 * I started testing this project using System.out.println statements and this was more comprehensively tested with the use of J-Unit tests which helped to identify the sources of code-errors.
 
+--> EXTENDING THE SML
+* As the program is extended, instructions must have the convention class name 'instruction' with a capitalised first letter + "Instruction". For example, for an 'add' instruction, the class name must be "AddInstruction".
+
 WHAT THE SML DOES
 
 The general form of a machine language instruction is
