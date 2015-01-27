@@ -1,6 +1,7 @@
 package sml;
 
 import lombok.Data;
+
 import lombok.EqualsAndHashCode;
 
 /**

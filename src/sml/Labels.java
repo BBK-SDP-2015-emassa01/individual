@@ -2,10 +2,12 @@ package sml;
 
 import java.util.ArrayList;
 
+import smlExceptions.DuplicatesException;
+
 //An instance contains a list of Strings, called "labels",
 //in the order in which they were added to the list. 
 
-public class Labels {
+public class Labels  {
 
 	private ArrayList<String> labels;
 
@@ -16,23 +18,18 @@ public class Labels {
 	// Add label lab to this list and return its number in the list
 	// (the first one added is number 0)
 	// Precondition: the list has at most 49 entries
-
 	public int addLabel(String lab) {
-		try {
-			if (labels.contains(lab)) {
-				System.out.println("\nDuplicate labels exist in the program.\nThis is not allowed. \nThis will be skipped.\n");
-			}
-		} catch (UnsupportedOperationException UOE) {
-			System.out.println("Something went wrong pertaining to an Illegal Argument: "+ UOE.getMessage());
-			System.exit(0);
+		if (labels.contains(lab)) {
+			System.out.println("\nDuplicate labels exist in the program.\nThis is not allowed. \nThis will be skipped.\n");
+			throw new DuplicatesException("Duplicate labels exist in the program.");
 		}
-		labels.add(lab);
-		return labels.size() - 1;
-	}
+	labels.add(lab);
+	return labels.size() - 1;
+}
 
+	
 	// = the number of label lab in the list
 	// (= -1 if lab is not in the list)
-
 	public int indexOf(String lab) {
 		// invariant: lab is not in labels[0..i-1]
 		for (int i = 0; i != labels.size(); i++) { // or i< labels.size()
@@ -43,8 +40,8 @@ public class Labels {
 		return -1;
 	}
 
+	
 	// representation of this instance, "(label 0, label 1, ..., label (n-1))"
-
 	@Override
 	public String toString() {
 		StringBuilder r = new StringBuilder("(");
@@ -62,7 +59,6 @@ public class Labels {
 	}
 
 	// Set the number of elements in the list to 0
-
 	public void reset() {
 		labels.clear();
 	}

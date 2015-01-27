@@ -1,9 +1,9 @@
 package sml;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import lombok.Data;
 
 /*
  * The machine language interpreter
@@ -65,7 +65,6 @@ public class Machine {
 
 	// Execute the program in prog, beginning at instruction 0.
 	// Precondition: the program and its labels have been stored properly.
-
 	public void execute() {
 		setPc(0);
 		setRegisters(new Registers());

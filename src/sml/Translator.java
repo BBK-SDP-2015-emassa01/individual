@@ -1,5 +1,7 @@
 package sml;
 
+
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -7,6 +9,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+
+import smlExceptions.DuplicatesException;
 
 /*
  * The translator of a <b>S</b><b>M</b>al<b>L</b> program.
@@ -53,7 +57,12 @@ public class Translator {
 				if (label.length() > 0) {
 					Instruction ins = getInstruction(label);
 					if (ins != null) {
+						try{
 						labels.addLabel(label);
+						} catch (DuplicatesException ex){
+							System.out.println("Fix the program so it does not contain dublicate labels");
+							System.exit(0);
+						}
 						program.add(ins);
 					}
 				}

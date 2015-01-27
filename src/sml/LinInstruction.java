@@ -1,4 +1,6 @@
 package sml;
+import lombok.Data;
+
 
 /**
  * This class stores the result x in

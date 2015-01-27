@@ -1,12 +1,15 @@
 package sml;
 
+import lombok.Data;
+
+
 /**
  * This class checks if the contents of register r is not zero, then 
  * makes the statement labelled Label2 the next one to execute
  * Instruction Format: Label1 bnz r Label2
  * @author Esha Massand
  */
-
+@Data
 public class BnzInstruction extends Instruction {
 	private int register;
 	private int result;

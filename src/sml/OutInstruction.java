@@ -1,5 +1,8 @@
 package sml;
 
+import lombok.Data;
+
+
 /**
  * This class prints on the console the value in
  * register s1, given the Instruction format: Label1 out s1
@@ -7,6 +10,7 @@ package sml;
  * @author Esha Massand
  */
 
+@Data
 public class OutInstruction extends Instruction {
 	private int register;
 	private int result;

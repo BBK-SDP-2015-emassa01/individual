@@ -1,5 +1,6 @@
 package sml;
 
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +12,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper=false)
 @Data
-public class SubInstruction extends Instruction {
+public class SubInstruction extends Instruction{
 	
 	private int result;
 	private int op1;

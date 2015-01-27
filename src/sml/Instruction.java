@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 
-public abstract class Instruction {
+public abstract class Instruction{
 	protected String label;
 	protected String opcode;
 
