@@ -12,6 +12,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper=false)
 @Data
+
 public class SubInstruction extends Instruction{
 	
 	private int result;

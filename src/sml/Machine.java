@@ -10,6 +10,7 @@ import java.util.Scanner;
  */
 @Data
 public class Machine {
+	
 	// The labels in the SML program, in the order in which
 	// they appear (are defined) in the program
 

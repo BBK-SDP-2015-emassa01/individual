@@ -25,7 +25,7 @@ public class Labels  {
 		}
 	labels.add(lab);
 	return labels.size() - 1;
-}
+	}
 
 	
 	// = the number of label lab in the list

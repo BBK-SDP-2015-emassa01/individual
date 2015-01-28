@@ -1,17 +1,18 @@
 package sml;
 
 import lombok.Data;
-
+import lombok.EqualsAndHashCode;
 
 /**
- * This class prints on the console the value in
- * register s1, given the Instruction format: Label1 out s1
+ * This class prints on the console the value in register s1, given the
+ * Instruction format: Label1 out s1
  * 
  * @author Esha Massand
  */
 
-@Data
+@Data @EqualsAndHashCode(callSuper=false)
 public class OutInstruction extends Instruction {
+	
 	private int register;
 	private int result;
 
@@ -23,10 +24,12 @@ public class OutInstruction extends Instruction {
 	@Override
 	public void execute(Machine m) {
 		this.result = m.getRegisters().getRegister(register);
-		System.out.println(super.toString() + " register " + register + " value is " + result);
+		System.out.println(super.toString() + " register " + register
+				+ " value is " + result);
 	}
-	
-	/* No overridden to String() method -- System.out.println().
-	*  No other functionality is required. 
-	*/
+
+	/*
+	 * No overridden to String() method -- System.out.println(). No other
+	 * functionality is required.
+	 */
 }
