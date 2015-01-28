@@ -29,7 +29,7 @@ public class AddInstructionTest {
 		Registers r = new Registers();
 		m.setRegisters(r);
 		
-		m.getRegisters().setRegister(3, 3);// check getRegisters() and setRegisters() methods.
+		m.getRegisters().setRegister(3, 3);// check getRegisters() and setRegister() methods.
 		m.getRegisters().setRegister(4, 4);
 		
 		AddInstruction ai = new AddInstruction("add", 5, 3, 4);
