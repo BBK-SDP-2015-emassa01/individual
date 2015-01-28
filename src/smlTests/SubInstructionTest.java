@@ -9,10 +9,8 @@ import sml.Registers;
 import sml.SubInstruction;
 
 public class SubInstructionTest {
-
-	private int result = 2;
-	private int s1 = 9;
-	private int s2 = 7;	
+	
+	SubInstruction si = new SubInstruction("sub", 2, 9, 7);
 	
 	@Test
 	public void executeTest(){
@@ -22,8 +20,6 @@ public class SubInstructionTest {
 		
 		m.getRegisters().setRegister(9, 9);// check getRegisters() and setRegister() methods.
 		m.getRegisters().setRegister(7, 7);
-		
-		SubInstruction si = new SubInstruction("sub", 2, 9, 7);
 		si.execute(m);
 		
 		int res = m.getRegisters().getRegister(2);
@@ -34,8 +30,7 @@ public class SubInstructionTest {
 	
 	@Test
 	public void toStringTest() {
-		SubInstruction addInstructionTest = new SubInstruction("sub", 2, 9, 7);
-		String observed = addInstructionTest.toString();
+		String observed = si.toString();
 		String expected =  "sub: sub 9 - 7 to 2";
 		assertEquals(expected, observed);
 	}
