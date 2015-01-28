@@ -19,7 +19,7 @@ public class RegistersTest {
 		
 		testRegisters.setRegister(4, 50);
 
-		int observed = testRegisters.getRegister(4);
+		int observed = testRegisters.getRegister(4); //test the setters and getters together.
 		int expected = 50;
 		
 		assertEquals(expected, observed);
