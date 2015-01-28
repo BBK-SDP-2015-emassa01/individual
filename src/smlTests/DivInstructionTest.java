@@ -27,8 +27,8 @@ public class DivInstructionTest {
 		m.getRegisters().setRegister(10, 10);// check getRegisters() and setRegister() methods.
 		m.getRegisters().setRegister(5, 5);
 		
-		DivInstruction ai = new DivInstruction("div", 2, 10, 5);
-		ai.execute(m);
+		DivInstruction di = new DivInstruction("div", 2, 10, 5);
+		di.execute(m);
 		
 		int res = m.getRegisters().getRegister(2);
 		System.out.println(res); //printed result to screen
@@ -38,8 +38,8 @@ public class DivInstructionTest {
 	
 	@Test
 	public void toStringTest() {
-		DivInstruction addInstructionTest = new DivInstruction("div", result, s1, s2);
-		String observed = addInstructionTest.toString();
+		DivInstruction divInstructionTest = new DivInstruction("div", result, s1, s2);
+		String observed = divInstructionTest.toString();
 		String expected =  "div: div 10 / 5 to 2";
 		assertEquals(observed, expected);
 	}
