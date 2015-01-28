@@ -26,7 +26,7 @@ The general form of a machine language instruction is
 'label instruction register-list'
 where;
 
-label: is the label for the line. Other instructions might \jump" to that label.
+label: is the label for the line. Other instructions might "jump" to that label.
 
 instruction: is the actual instruction.
 
