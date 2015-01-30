@@ -22,9 +22,6 @@ public class SubInstructionTest {
 		m.getRegisters().setRegister(7, 7);
 		si.execute(m);
 		
-		int res = m.getRegisters().getRegister(2);
-		System.out.println(res); //printed result to screen
-		assertTrue(res == 2); //checked the result
 		assertTrue(m.getRegisters().getRegister(2) ==2); //checked the result was in the register.
 	}
 	
