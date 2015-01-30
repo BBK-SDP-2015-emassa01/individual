@@ -6,7 +6,11 @@ SUMMARY:
 --> The SML is an interpreter for a simple machine language SML. The general form of a machine language instruction is
 label instruction register-list.
 
---> SML uses Java refection to create the instances of the subclasses. The SML language to be extended without having to modify
+REFLECTION:
+--> SML uses Java reflection to create the instances of the subclasses. The SML language to be extended without having to modify
+the original code.
+--> Reflection is also used in the Testing of the Scan and ScanInt methods in the translator class
+--> SML uses Java reflection to create the instances of the subclasses. The SML language to be extended without having to modify
 the original code.
 
 --> ERROR CHECKING
@@ -16,9 +20,21 @@ Registers are only allowed in the range 0-31
 --> TESTING
 * As the project required the modification of existing code, there was no Test Driven Development.
 * I started testing this project using System.out.println statements and this was more comprehensively tested with the use of J-Unit tests which helped to identify the sources of code-errors.
+*I remove println() statements towards the end of testing
+*I used reflection to test the private methods in the Translator class (scan() and scanInt()).
 
 --> EXTENDING THE SML
 * As the program is extended, instructions must have the convention class name 'instruction' with a capitalised first letter + "Instruction". For example, for an 'add' instruction, the class name must be "AddInstruction".
+
+Thanks & Enjoy!
+
+
+
+
+
+
+
+Project Description:
 
 WHAT THE SML DOES
 
@@ -57,8 +73,5 @@ Each statement of a program must be labeled with a different identifer.
 
 Each of s1, s2, and r is an integer in the range 0. . . 31 and refers to one of the 32 registers in the machine that executes language SML.
 
-SML uses Java refection to create the instances of the subclasses. The SML language to be extended without having to modify
-the original code.
 
-Thanks & Enjoy!
 
