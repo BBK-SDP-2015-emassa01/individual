@@ -26,7 +26,6 @@ public class LinInstructionTest {
 		li.execute(m);
 		
 		int res = m.getRegisters().getRegister(4);
-		System.out.println(res); //printed result to screen
 		assertTrue(res == 2); //checked the result
 		assertTrue(m.getRegisters().getRegister(4) ==2); //checked the result was in the register.
 	}
