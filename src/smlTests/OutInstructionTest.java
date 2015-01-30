@@ -25,7 +25,6 @@ public class OutInstructionTest {
 		
 		int res = m.getRegisters().getRegister(5);
 		System.out.println(res); //printed result to screen
-		assertTrue(res == 5); //checked the result
 		assertTrue(m.getRegisters().getRegister(5) ==5); //checked the result was in the register.
 	}
 	
