@@ -1,5 +1,7 @@
 package sml;
 
+import lombok.Data;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -13,6 +15,7 @@ import smlExceptions.DuplicatesException;
 /*
  * The translator of a <b>S</b><b>M</b>al<b>L</b> program.
  */
+@Data
 public class Translator {
 
 	// word + line is the part of the current line that's not yet processed
