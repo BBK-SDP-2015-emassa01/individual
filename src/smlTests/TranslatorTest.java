@@ -65,7 +65,7 @@ public class TranslatorTest {
 		assertNull (t.getProgram());
 	}
 	
-	@Test
+	@Test //private method - used reflection to test.
 	public void scanTest() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Translator t = new Translator("testAdd.txt");
 		t.setLabels(lab);
@@ -83,7 +83,7 @@ public class TranslatorTest {
 
 	}
 	
-	@Test
+	@Test //private method - used reflection to test.
 	public void scanIntTest() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Translator t2 = new Translator("testAdd.txt");
 		t2.setLabels(lab2);
