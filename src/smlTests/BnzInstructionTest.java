@@ -30,8 +30,6 @@ public class BnzInstructionTest {
 		m.getLabels().addLabel("f2");
 		m.getLabels().addLabel("f0"); //add some labels to check the addLabel(), getLabels() and indexOf() methods
 		int expectedInt = m.getRegisters().getRegister(3); // check getRegister() and getRegisters() methods.
-		System.out.println("The number is not zero: "+expectedInt);
-		System.out.println("Skipping to instruction: "+m.getLabels().indexOf(register));
 		
 		bnzInstructionTest2.execute(m2);
 		
@@ -42,7 +40,6 @@ public class BnzInstructionTest {
 	@Test
 	public void toStringTest(){
 		
-		System.out.println(bnzInstructionTest2.toString()); //this is what get's printed to String. Checking if it matches the below
-		System.out.println("bnz: bnz, register: 9, next label: f0");
+		assertEquals("bnz: bnz, register: 9, next label: f0", bnzInstructionTest2.toString());
 	}
 }
