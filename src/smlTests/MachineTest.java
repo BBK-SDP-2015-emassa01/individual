@@ -21,13 +21,19 @@ public class MachineTest {
 	Registers r = new Registers();
 	ArrayList<Instruction> prog = new ArrayList<>();
 	
+	@Test
+	public void setRegistersTest(){
+		Registers r1 = new Registers();
+		Registers expected = r1;
+		m.setRegisters(r1);
+		Registers observed = this.r;
+		assertEquals(expected, observed);
+	}
 	
 
 	@Test
 	public void toStringTest(){
-	
 	m.setRegisters(r);
-	
 	m.getRegisters().setRegister(3, 3);// check getRegisters() and setRegister() methods.
 	m.getRegisters().setRegister(4, 4);
 	m.getRegisters().setRegister(5, 5);
