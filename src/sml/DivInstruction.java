@@ -32,7 +32,7 @@ public class DivInstruction extends Instruction {
 		m.getRegisters().setRegister(result, value1 / value2);
 		} catch (ArithmeticException ae){
 			if (value2 ==0){
-			System.out.println("Note: Illegal Operation Ignored! \nYou can't divide by zero.");
+			System.out.println("Note: Illegal Operation! \nYou can't divide by zero.");
 			}
 		}
 	}
