@@ -99,5 +99,113 @@ public class TranslatorTest {
 		int expected = 10;
 		assertEquals(expected, obs);
 	}
+	
+	@Test
+	public void getInstructionLinTest(){
+		Translator t3 = new Translator("testLin.txt");
+		Labels lab3 = new Labels();
+		lab3.addLabel("f0");
+		lab3.addLabel("f1");
+		lab3.addLabel("f2");
+		
+		t3.setLabels(lab3);
+		t3.setProgram(prog);
+		t3.setLine("lin 10 6");
+		
+		Instruction obs = t3.getInstruction("lin");
+		Instruction exp = new LinInstruction("lin", 10,6);
+		
+		assertEquals(exp,obs);
+	}
+	
+	@Test
+	public void getInstructionAddTest(){
+		Translator t3 = new Translator("testAdd.txt");
+		Labels lab3 = new Labels();
+		lab3.addLabel("f0");
+		lab3.addLabel("f1");
+		lab3.addLabel("f2");
+		
+		t3.setLabels(lab3);
+		t3.setProgram(prog);
+		t3.setLine("add 13 10 11");
+		
+		Instruction obs = t3.getInstruction("add");
+		Instruction exp = new AddInstruction("add", 13, 10, 11);
+		
+		assertEquals(exp,obs);
+	}
+
+	@Test
+	public void getInstructionSubTest(){
+		Translator t3 = new Translator("testSub.txt");
+		Labels lab3 = new Labels();
+		lab3.addLabel("f0");
+		lab3.addLabel("f1");
+		lab3.addLabel("f2");
+		
+		t3.setLabels(lab3);
+		t3.setProgram(prog);
+		t3.setLine("sub 13 10 11");
+		
+		Instruction obs = t3.getInstruction("sub");
+		Instruction exp = new SubInstruction("sub", 13, 10, 11);
+		
+		assertEquals(exp,obs);
+	}
+	
+	@Test
+	public void getInstructionMulTest(){
+		Translator t3 = new Translator("testMul.txt");
+		Labels lab3 = new Labels();
+		lab3.addLabel("f0");
+		lab3.addLabel("f1");
+		lab3.addLabel("f2");
+		
+		t3.setLabels(lab3);
+		t3.setProgram(prog);
+		t3.setLine("mul 13 10 11");
+		
+		Instruction obs = t3.getInstruction("mul");
+		Instruction exp = new MulInstruction("mul", 13, 10, 11);
+		
+		assertEquals(exp,obs);
+	}
+	
+	@Test
+	public void getInstructionDivTest(){
+		Translator t3 = new Translator("testDiv.txt");
+		Labels lab3 = new Labels();
+		lab3.addLabel("f0");
+		lab3.addLabel("f1");
+		lab3.addLabel("f2");
+		
+		t3.setLabels(lab3);
+		t3.setProgram(prog);
+		t3.setLine("div 13 10 11");
+		
+		Instruction obs = t3.getInstruction("div");
+		Instruction exp = new DivInstruction("div", 13, 10, 11);
+		
+		assertEquals(exp,obs);
+	}
+	
+	@Test
+	public void getInstructionOutTest(){
+		Translator t3 = new Translator("testOuttxt");
+		Labels lab3 = new Labels();
+		lab3.addLabel("f0");
+		lab3.addLabel("f1");
+		lab3.addLabel("f2");
+		
+		t3.setLabels(lab3);
+		t3.setProgram(prog);
+		t3.setLine("out 13");
+		
+		Instruction obs = t3.getInstruction("out");
+		Instruction exp = new OutInstruction("out", 13);
+		
+		assertEquals(exp,obs);
+	}
 
 }

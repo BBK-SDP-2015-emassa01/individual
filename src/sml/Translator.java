@@ -110,8 +110,8 @@ public class Translator {
 
 		try {
 			// Using example here:
-			// http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
-			// https://www.youtube.com/watch?v=agnblS47F18 Derek Banas Youtube
+			// REF http://docs.oracle.com/javase/tutorial/reflect/member/ctorLocation.html
+			// REF https://www.youtube.com/watch?v=agnblS47F18 Derek Banas Youtube
 			Class<?> aClass = Class.forName("sml." + ClassInstruction);
 			Constructor<?>[] allInstructionConstructors = aClass
 					.getDeclaredConstructors();
