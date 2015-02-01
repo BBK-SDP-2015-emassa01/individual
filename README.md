@@ -22,7 +22,7 @@ Duplicate labels are not allowed.
 Registers are only allowed in the range 0-31
 
 --> TESTING
-* As the project required the modification of existing code, there was no Test Driven Development.
+* As the project required the modification of existing code, I checked these methods using JUnit 4.0. For new methods that were created to enable the use of reflection, I carried out Test Driven Development.
 * I started testing this project using System.out.println statements and this was more comprehensively tested with the use of J-Unit tests which helped to identify the sources of code-errors.
 *I remove println() statements towards the end of testing
 *I used reflection to test the private methods in the Translator class (scan() and scanInt()).
