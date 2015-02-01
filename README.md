@@ -17,6 +17,7 @@ the original code.
 the original code.
 
 --> ERROR CHECKING
+
 Duplicate labels are not allowed.
 Registers are only allowed in the range 0-31
 
