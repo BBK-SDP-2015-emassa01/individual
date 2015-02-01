@@ -26,6 +26,11 @@ Registers are only allowed in the range 0-31
 --> EXTENDING THE SML
 * As the program is extended, instructions must have the convention class name 'instruction' with a capitalised first letter + "Instruction". For example, for an 'add' instruction, the class name must be "AddInstruction".
 
+ASSUMPTIONS OF THE SML
+-->
+* The sml will assume that the default platform encoding is suitable as it will perform a byte to String (or String to byte) conversion. 
+* The sml assumes that the programs are read in the English language (i.e., to UpperCase methods will not work on International Characters
+
 Thanks & Enjoy!
 
 

@@ -36,7 +36,9 @@ public class Translator {
 	// prog (the program)
 	// return "no errors were detected"
 	public boolean readAndTranslate(Labels lab, ArrayList<Instruction> prog) {
-
+		/*
+        Findbugs revealed a reliance upon default encoding -- this is fine and the readme was updated. 
+        */
 		try (Scanner sc = new Scanner(new File(fileName))) {
 			// Scanner attached to the file chosen by the user
 			labels = lab;
@@ -92,6 +94,9 @@ public class Translator {
 
 		// get the filename and convert it to classname
 		String ClassInstruction = scan() + "Instruction";
+		/*
+		 * Reliance upon English with the toUpperCase() method.
+		 */
 		ClassInstruction = ClassInstruction.substring(0, 1).toUpperCase()
 				+ ClassInstruction.substring(1, ClassInstruction.length());
 
