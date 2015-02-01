@@ -9,7 +9,9 @@ label instruction register-list.
 REFLECTION:
 --> SML uses Java reflection to create the instances of the subclasses. The SML language to be extended without having to modify
 the original code.
+
 --> Reflection is also used in the Testing of the Scan and ScanInt methods in the translator class
+
 --> SML uses Java reflection to create the instances of the subclasses. The SML language to be extended without having to modify
 the original code.
 
