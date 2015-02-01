@@ -9,6 +9,11 @@ import lombok.EqualsAndHashCode;
  * @author Esha Massand
  */
 @EqualsAndHashCode(callSuper=false)
+/*
+* FindBugs debugging revealed these as errors, but they are fine: 
+* call to setRegisters() is fine.
+* call to getRegisters() is fine.
+*/
 @Data
 public class Registers {
 
@@ -35,7 +40,6 @@ public class Registers {
 				registers[i] = v;		
 		}else {
 			System.out.println("Warning! Your program attemped to save to a register that does not exist.\nCannot complete the operation. \nExiting program.");
-			System.exit(0);
 			}
 	}
 

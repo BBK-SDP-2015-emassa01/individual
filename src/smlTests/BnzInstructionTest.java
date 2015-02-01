@@ -29,12 +29,12 @@ public class BnzInstructionTest {
 		m.getLabels().addLabel("f1");
 		m.getLabels().addLabel("f2");
 		m.getLabels().addLabel("f0"); //add some labels to check the addLabel(), getLabels() and indexOf() methods
-		int expectedInt = m.getRegisters().getRegister(3); // check getRegister() and getRegisters() methods.
+		int expectedInt = 2;
 		
 		bnzInstructionTest2.execute(m2);
 		
 		//void method so testing each component separately with println statements.
-		assertEquals(2, m.getLabels().indexOf(register)); 
+		assertEquals(expectedInt, m.getLabels().indexOf(register)); 
 	}
 	
 	@Test
