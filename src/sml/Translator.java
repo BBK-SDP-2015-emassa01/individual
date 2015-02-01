@@ -95,7 +95,7 @@ public class Translator {
 		// get the filename and convert it to classname
 		String ClassInstruction = scan() + "Instruction";
 		/*
-		 * Reliance upon English with the toUpperCase() method.
+		 * Reliance upon using toUpperCase() method. Program may work unexpectedly with International Characters.
 		 */
 		ClassInstruction = ClassInstruction.substring(0, 1).toUpperCase()
 				+ ClassInstruction.substring(1, ClassInstruction.length());
